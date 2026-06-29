@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Omkar Subhash Ghodke — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surface:#141414;--card:#181818;
+  --gold:#c9a84c;--gold-dim:#8a6e30;--gold-faint:#1a1710;
+  --text:#e8e4dc;--muted:#6b6560;--soft:#a09890;
+  --border:#222;--border-gold:#2e2618;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:300;line-height:1.7;min-height:100vh}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.9rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;letter-spacing:.04em;color:var(--text)}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+
+/* LAYOUT */
+.port{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
+
+/* HERO */
+.hero{padding:4rem 0 3.5rem;border-bottom:1px solid var(--border);margin-bottom:4rem}
+.hero-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:500;line-height:1.05;color:var(--text);margin-bottom:.5rem}
+.hero-name em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:15px;color:var(--soft);max-width:460px;line-height:1.85;margin-top:1.2rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:2rem}
+.htag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border:1px solid var(--border);border-radius:2px;color:var(--muted)}
+.htag.gold{border-color:var(--gold-dim);color:var(--gold)}
+
+/* SECTION LABEL */
+.sec-label{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.sec-label-line{flex:1;height:1px;background:var(--border)}
+.sec-label-text{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+section{margin-bottom:4.5rem}
+
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pillar{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:1.6rem 1.3rem;transition:border-color .3s}
+.pillar:hover{border-color:var(--gold-dim)}
+.pillar-icon{font-size:22px;margin-bottom:1rem}
+.pillar-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;color:var(--text);margin-bottom:.4rem}
+.pillar-sub{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.about-cell{background:var(--surface);padding:1rem 1.3rem}
+.about-key{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.about-val{font-size:13px;color:var(--text)}
+.about-val.gold{color:var(--gold)}
+.about-val a{color:var(--gold);text-decoration:none}
+.about-val a:hover{text-decoration:underline}
+
+/* SKILLS */
+.skill-row{display:flex;align-items:center;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--border)}
+.skill-row:last-child{border-bottom:none}
+.skill-name{font-size:12px;color:var(--soft);min-width:130px;letter-spacing:.04em}
+.skill-bar{flex:1;height:2px;background:#1f1f1f;border-radius:1px;overflow:hidden}
+.skill-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,var(--gold-dim),var(--gold));width:0%;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.skill-pct{font-size:11px;color:var(--muted);min-width:34px;text-align:right}
+
+/* PROJECTS */
+.proj{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.proj:last-child{border-bottom:none}
+.proj-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;gap:1rem;flex-wrap:wrap}
+.proj-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--text)}
+.proj-badge{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:3px 10px;border:1px solid var(--gold-dim);border-radius:2px;white-space:nowrap}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:.7rem}
+.proj-stack{display:flex;gap:6px;flex-wrap:wrap}
+.stack-tag{font-size:10px;color:var(--soft);padding:3px 9px;background:#1c1c1c;border-radius:2px;border:1px solid var(--border)}
+
+/* CONTACT */
+.contact-box{background:var(--gold-faint);border:1px solid var(--border-gold);border-radius:4px;padding:2.2rem}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--text);margin-bottom:.5rem}
+.contact-sub{font-size:13px;color:var(--muted);margin-bottom:1.8rem;line-height:1.7}
+.contact-links{display:flex;gap:10px;flex-wrap:wrap}
+.clink{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:10px 20px;border:1px solid var(--gold-dim);border-radius:2px;background:transparent;cursor:pointer;font-family:'Inter',sans-serif;font-weight:400;text-decoration:none;transition:background .2s,color .2s;display:inline-block}
+.clink:hover{background:#2a2010}
+
+/* STATUS */
+.status{display:flex;align-items:center;gap:.6rem;margin-top:1.5rem}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.5s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.status-text{font-size:11px;color:var(--muted);letter-spacing:.06em}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:11px;color:var(--muted);letter-spacing:.1em}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero-name{font-size:42px}
+  .pillars{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  nav{padding:.8rem 1.2rem}
+  .port{padding:2rem 1.2rem 4rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Omkar Ghodke</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="port">
+
+  <!-- HERO -->
+  <div class="hero" id="home">
+    <div class="hero-eyebrow">Portfolio · 2025</div>
+    <div class="hero-name">Athlete.<br><em>Developer.</em><br>Nutritionist.</div>
+    <div class="hero-desc">Third-year IT student, competitive bodybuilder, and MERN stack intern — building web apps and studying the science behind peak performance.</div>
+    <div class="hero-tags">
+      <div class="htag gold">MERN Stack</div>
+      <div class="htag gold">Bodybuilding</div>
+      <div class="htag gold">Diet & Nutrition</div>
+      <div class="htag gold">Pune, India</div>
+      <div class="htag gold">Open to  opportunities</div>
+    </div>
+  </div>
+
+  <!-- IDENTITY -->
+  <section id="about">
+    <div class="sec-label">
+      <div class="sec-label-line"></div>
+      <div class="sec-label-text">Who I am</div>
+      <div class="sec-label-line"></div>
+    </div>
+    <div class="pillars" style="margin-bottom:2rem">
+      <div class="pillar">
+        <div class="pillar-icon">🏋️</div>
+        <div class="pillar-title">Bodybuilder</div>
+        <div class="pillar-sub">Discipline built in the gym carries into every line of code. Consistency is the foundation of both craft.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">💻</div>
+        <div class="pillar-title">Developer</div>
+        <div class="pillar-sub">Interning as a MERN stack developer — building real-world web apps with React, Node, Express and MongoDB.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🥗</div>
+        <div class="pillar-title">Nutritionist</div>
+        <div class="pillar-sub">Studying diet and nutrition science to understand performance, recovery, and what it means to train smart.</div>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-cell"><div class="about-key">Name</div><div class="about-val">Omkar Subhash Ghodke</div></div>
+      <div class="about-cell"><div class="about-key">Status</div><div class="about-val gold">MERN Intern · Active</div></div>
+      <div class="about-cell"><div class="about-key">Education</div><div class="about-val">Diploma in IT — Year 3</div></div>
+      <div class="about-cell"><div class="about-key">Location</div><div class="about-val">Pune, Maharashtra, India</div></div>
+      <div class="about-cell"><div class="about-key">Sport</div><div class="about-val">Bodybuilding</div></div>
+      <div class="about-cell"><div class="about-key">Studying</div><div class="about-val">Diet & Nutrition Science</div></div>
+      <div class="about-cell"><div class="about-key">GitHub</div><div class="about-val"><a href="https://github.com/omkarr29" target="_blank">github.com/omkarr29</a></div></div>
+      <div class="about-cell"><div class="about-key">Instagram</div><div class="about-val"><a href="https://www.instagram.com/omkarr29_/" target="_blank">@omkarr29_</a></div></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-label">
+      <div class="sec-label-line"></div>
+      <div class="sec-label-text">Skills</div>
+      <div class="sec-label-line"></div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1.2rem 1.6rem" id="skills-wrap"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-label">
+      <div class="sec-label-line"></div>
+      <div class="sec-label-text">Projects</div>
+      <div class="sec-label-line"></div>
+    </div>
+    <div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">Gym Website</div>
+          <div class="proj-badge">HTML & CSS</div>
+        </div>
+        <div class="proj-desc">A fully designed gym landing page built with pure HTML and CSS — combining a passion for fitness with frontend skills. Responsive layout, clean sections, and a bold visual identity.</div>
+        <div class="proj-stack">
+          <span class="stack-tag">HTML</span>
+          <span class="stack-tag">CSS</span>
+          <span class="stack-tag">Responsive Design</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">Hotel Management System</div>
+          <div class="proj-badge">Java & Python</div>
+        </div>
+        <div class="proj-desc">A multi-language hotel management system handling room bookings, billing, and guest records. Demonstrates backend logic and object-oriented design across two languages.</div>
+        <div class="proj-stack">
+          <span class="stack-tag">Java</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">OOP</span>
+          <span class="stack-tag">File Handling</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">Study Tracker</div>
+          <div class="proj-badge">C++</div>
+        </div>
+        <div class="proj-desc">A console-based study tracker built in C++ to log subjects, track study hours, and monitor progress — born from the real challenge of balancing training and academics.</div>
+        <div class="proj-stack">
+          <span class="stack-tag">C++</span>
+          <span class="stack-tag">Data Structures</span>
+          <span class="stack-tag">File I/O</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">Rank Management System</div>
+          <div class="proj-badge">C</div>
+        </div>
+        <div class="proj-desc">A rank management system written in C — managing student rankings with sorting algorithms, record storage, and efficient data handling at the language level.</div>
+        <div class="proj-stack">
+          <span class="stack-tag">C</span>
+          <span class="stack-tag">Algorithms</span>
+          <span class="stack-tag">Sorting</span>
+          <span class="stack-tag">Structs</span>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div class="proj-name">MERN Stack Internship Projects</div>
+          <div class="proj-badge">MERN · In Progress</div>
+        </div>
+        <div class="proj-desc">Ongoing work building full web apps during my internship — React frontends, Express REST APIs, MongoDB databases, and Node.js backends.</div>
+        <div class="proj-stack">
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">Express</span>
+          <span class="stack-tag">MongoDB</span>
+          <span class="stack-tag">REST API</span>
+          <span class="stack-tag">JWT</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec-label">
+      <div class="sec-label-line"></div>
+      <div class="sec-label-text">Contact</div>
+      <div class="sec-label-line"></div>
+    </div>
+    <div class="contact-box">
+      <div class="contact-title">Let's connect</div>
+      <div class="contact-sub">Open to internships, collaborations, and conversations about tech, bodybuilding, or nutrition. I bring the discipline of an athlete to everything I build.</div>
+      <div class="contact-links">
+        <a href="https://github.com/omkarr29" target="_blank" class="clink">GitHub</a>
+        <a href="https://www.linkedin.com/in/omkar-ghodke-9b1239326" target="_blank" class="clink">LinkedIn</a>
+        <a href="https://www.instagram.com/omkarr29_/" target="_blank" class="clink">Instagram</a>
+      </div>
+      <div class="status">
+        <span class="status-dot"></span>
+        <span class="status-text">Available for opportunities · Pune, India</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2025 Omkar Subhash Ghodke &nbsp;·&nbsp; Pune, India
+</footer>
+
+<script>
+const skills=[
+  {n:"JavaScript",p:70},{n:"HTML & CSS",p:75},
+  {n:"React.js",p:65},{n:"Node.js",p:60},
+  {n:"Express.js",p:60},{n:"MongoDB",p:55},
+  {n:"REST APIs",p:58},{n:"C / C++",p:65},
+  {n:"Java",p:60},{n:"Python",p:55},
+  {n:"Git & GitHub",p:55},
+];
+const wrap=document.getElementById('skills-wrap');
+skills.forEach(s=>{
+  const d=document.createElement('div');
+  d.className='skill-row';
+  d.style.cssText='display:flex;align-items:center;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--border)';
+  d.innerHTML=`<div class="skill-name">${s.n}</div><div class="skill-bar"><div class="skill-fill" data-w="${s.p}"></div></div><div class="skill-pct">${s.p}%</div>`;
+  wrap.appendChild(d);
+});
+if(wrap.lastChild) wrap.lastChild.style.borderBottom='none';
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.skill-fill').forEach(el=>{
+        el.style.width=el.dataset.w+'%';
+      });
+      observer.disconnect();
+    }
+  });
+},{threshold:0.3});
+observer.observe(wrap);
+</script>
+</body>
+</html>
